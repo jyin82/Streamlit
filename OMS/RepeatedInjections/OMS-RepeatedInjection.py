@@ -18,6 +18,9 @@ Base = declarative_base()
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer 
 
+st.write("DB username:", st.secrets["db_username"])
+st.write("DB password:", st.secrets["db_password"])
+
 
 st.set_page_config(page_title='Results Dashboard', page_icon=('favicon.ico'), initial_sidebar_state='expanded', layout='wide')
 #st.sidebar.image('olblack.png', width=140)
