@@ -1,6 +1,4 @@
-#According to Ian's code on streamlit dashboard
 import streamlit as st
-
 import pandas as pd
 pd.options.display.max_columns = None
 import numpy as np
@@ -10,7 +8,6 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 from matplotlib import pyplot as plt
 import itertools
-
 from sqlalchemy import create_engine, inspect, Table, MetaData
 metadata = MetaData()
 from sqlalchemy.engine.base import Engine
@@ -27,73 +24,6 @@ st.set_page_config(page_title='Results Dashboard', page_icon=('favicon.ico'), in
 st.sidebar.title('Results Dashboard')
 
 
-# streamlit cache decorator https://docs.streamlit.io/library/advanced-features/experimental-cache-primitives
-# for Mike's code for connecting to the database
-#----------------------------------------------------------#
-# @st.experimental_singleton
-# def connect_db( 
-#             db = "datarepo",
-#             dbschema = "openlabcdr",
-#             user = "postgres", 
-#             pwd = "postgres", 
-#             addy = "localhost", # Team Remote
-#             port = "5433", #Team remote          
-#         ):
-
-#     uri = "postgresql://{user}:{pwd}@{addy}:{port}/{db}".format(
-#             db = db,
-#             user = user, 
-#             pwd = pwd, 
-#             addy = addy,
-#             port = port)
-    
-#     print("Connecting to: {}".format(uri))
-
-#     engine = create_engine(uri)
-#     db = scoped_session(sessionmaker(bind=engine))
-#     db.execute("SET search_path TO {}".format(dbschema))
-
-#     inspector = inspect(engine)
-
-#     result_set = db.execute("SELECT current_database();")  
-#     for r in result_set:  
-#         print("current database: {}".format(r))
-
-#     result_set = db.execute("SELECT current_schema();")  
-#     for r in result_set:  
-#         print("current schema: {}".format(r))
-
-#     return (engine, db, inspector)
-
-# engine, db, inspector = connect_db(
-#     db = "datarepo",
-#     dbschema = "openlabcdr",
-#     pwd = "postgres", 
-#     addy = "localhost", # Team Remote
-#     port = "5433", #Team remote
-# )
-
-
-# # streamlit cache for DB query
-# @st.experimental_memo
-# def query_db(sql, _engine):
-#     return pd.read_sql_query(sql, engine)
-
-# # query
-# sql = ( "SELECT mv_peaks.peak_retentiontime, mv_peaks.peak_area, mv_peaks.peak_area_unit, mv_peaks.peak_symmetry, mv_peaks.peak_tailingfactor, mv_peaks.resultset_name, mv_injcompounds.injcompound_name, mv_injections.instrument_name, mv_injections.injection_acquireddate, mv_injections.injection_datafilename "
-#         "FROM openlabcdr.mv_injections "
-#         "LEFT JOIN openlabcdr.mv_peaks "
-#         "ON mv_injections.injection_id = mv_peaks.injection_id "
-#         "LEFT JOIN openlabcdr.mv_injcompounds "
-#         "ON mv_peaks.object_id = mv_injcompounds.mainpeak_object_id "
-#         "WHERE mv_peaks.resultsetrevision_iscurrent = TRUE;")
-
-
-# # query the database
-# raw_results_df = query_db(sql, engine)
-# # drop NaN and Null values, need to address this a better way
-# results_df = raw_results_df.dropna()
-#----------------------------------------------------------------------------------------------#
 
 #Data from OMS (excel files)
 df_5 = pd.read_excel(r'Excel from OMS/sequence and detail.xls.xlsx', skiprows=1)
