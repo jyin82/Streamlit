@@ -2,3 +2,7 @@ altair
 pandas
 streamlit
 plotly
+matplotlib
+sqlalchemy
+numpy
+pandas
