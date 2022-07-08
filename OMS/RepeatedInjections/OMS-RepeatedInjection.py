@@ -17,9 +17,15 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 from sqlalchemy.schema import Column
 from sqlalchemy.types import Integer 
+import os
 
 st.write("DB username:", st.secrets["db_username"])
 st.write("DB password:", st.secrets["db_password"])
+
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_username"] == st.secrets["db_username"],
+)
 
 
 st.set_page_config(page_title='Results Dashboard', page_icon=('favicon.ico'), initial_sidebar_state='expanded', layout='wide')
