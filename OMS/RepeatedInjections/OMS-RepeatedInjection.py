@@ -26,7 +26,7 @@ st.sidebar.title('Results Dashboard')
 
 
 #Data from OMS (excel files)
-df_5 = pd.read_excel(r'Excel from OMS/sequence and detail.xls.xlsx', skiprows=1)
+df_5 = pd.read_excel('sequence and detail.xls.xlsx', skiprows=1)
 
 #only keep the 'Sample' injection, get rid of "calibration", 'Blank'
 df_5_sample = df_5.loc[df_5['sample_type'] == 'Sample']
