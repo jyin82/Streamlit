@@ -1,5 +1,4 @@
 import streamlit as st
-
 import pandas as pd
 pd.options.display.max_columns = None
 import numpy as np
@@ -9,7 +8,6 @@ import plotly.io as pio
 from plotly.subplots import make_subplots
 from matplotlib import pyplot as plt
 import itertools
-
 from sqlalchemy import create_engine, inspect, Table, MetaData
 metadata = MetaData()
 from sqlalchemy.engine.base import Engine
