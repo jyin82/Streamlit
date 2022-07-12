@@ -28,6 +28,13 @@ st.write(
 )
 
 
+st.write(
+    "Has environment variables been set:",
+    os.environ["db_password"] == st.secrets["db_password"],
+)
+
+
+
 st.set_page_config(page_title='Results Dashboard', page_icon=('favicon.ico'), initial_sidebar_state='expanded', layout='wide')
 #st.sidebar.image('olblack.png', width=140)
 st.sidebar.title('Results Dashboard')
