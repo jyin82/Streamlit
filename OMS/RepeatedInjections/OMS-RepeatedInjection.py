@@ -25,14 +25,8 @@ st.write("DB password:", st.secrets["db_password"])
 st.write(
     "Has environment variables been set:",
     os.environ["db_username"] == st.secrets["db_username"],
-)
-
-
-st.write(
-    "Has environment variables been set:",
     os.environ["db_password"] == st.secrets["db_password"],
 )
-
 
 
 st.set_page_config(page_title='Results Dashboard', page_icon=('favicon.ico'), initial_sidebar_state='expanded', layout='wide')
